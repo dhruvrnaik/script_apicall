@@ -13,11 +13,8 @@ for i in range(10):
 url2 = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+place_id +"&key=AIzaSyClvOa41RlvjTGJrdpHo3pxnHm00MRR27w"
 dets = requests.get(url2)
 info = dets.json()
-try:
-	phone = info["result"]["formatted_phone_number"]
-except Error:
-	phone = None
-address = info["result"]["formatted_address"]
-name = info['result']['name']
-
-print(name+"\n"+address+"\n"+phone)
+if info["result"]["formatted_phone_number"]:
+	print (info["result"]["formatted_phone_number"])
+print(info["result"]["formatted_address"])
+print(info['result']['name'])
+	
