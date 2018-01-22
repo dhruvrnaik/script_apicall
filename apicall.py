@@ -1,6 +1,6 @@
 import requests
 import json
-
+#Hospital
 url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=13.351467,74.792691&rankby=distance&type=hospital&key=AIzaSyClvOa41RlvjTGJrdpHo3pxnHm00MRR27w"
 response = requests.get(url)
 data = response.json()
@@ -20,4 +20,20 @@ except Error:
 address = info["result"]["formatted_address"]
 name = info['result']['name']
 
-print(name+"\n"+address+"\n"+phone)
+dic = {"Kerela":"dgp.pol@kerala.gov.in;Not available",
+"Chennai":"cop@vsnl.net;@chennaipolice_",
+"Tamil Nadu":"dgp@tn.gov.in;Not Available",
+"Hyderabad":"contact@hyd.tspolice.gov.in;@hydcitypolice",
+"Bengaluru":"compolbcp@ksp.gov.in;@BlrCityPolice",
+"Karnataka":"ksdgp@bgl.vsnl.net.in;Not Available",
+"Mumbai":"cp.mumbai@mahapolice.gov.in:@MumbaiPolice",
+"Maharashtra":"dgpms.mumbai@mahapolice.gov.in;@DGPMaharashtra",
+"Kolkata":"splcp1 kolkatapolice.gov.in;@KolkataPolice",
+"West Bengal":"Not Available;@WBPolice",
+"New Delhi":"cp.bsbassi@nic.in;@DelhiPolice"}
+mail = "Not Available"
+for key in dic.keys():
+	if key in address:
+		mail = dic[key]
+
+print(name+";"+address+";"+phone+mail)
