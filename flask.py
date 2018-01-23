@@ -27,13 +27,13 @@ def param():
 		phone = "Not Available"
 	address = info["result"]["formatted_address"]
 	name = info['result']['name']
-	hosp_lat = info["result"]["geometry"]["location"]["lat"]
-	hosp_lon = info["result"]["geometry"]["location"]["lng"]
+	hosp_lat = str(info["result"]["geometry"]["location"]["lat"])
+	hosp_lon = str(info["result"]["geometry"]["location"]["lng"])
 	hosp_loc = hosp_lat+","+hosp_lon
 	url_hosp = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+loc+"&destinations="+hosp_loc+"&key= AIzaSyALEK65QRcNATfIwM2NZ0RF_ucaQSMbObQ"
 	hosp_dets = requests.get(url_hosp)
 	hosp_info = hosp_dets.json()
-	hosp_distance_dur = hosp_info['rows']['0']['elements']['0']['distance'] +";"+hosp_info['rows']['0']['elements']['0']['duration']
+	hosp_distance_dur = hosp_info['rows'][0]['elements'][0]['distance']["text"]+";"+hosp_info['rows'][0]['elements'][0]['duration']['text']
 
 	#Police Station
 	url3 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+loc+"&rankby=distance&type=police&key=AIzaSyClvOa41RlvjTGJrdpHo3pxnHm00MRR27w"
@@ -54,13 +54,13 @@ def param():
 	address2 = info2["result"]["formatted_address"]
 	name2 = info2['result']['name']
 
-	pol_lat = info2["result"]["geometry"]["location"]["lat"]
-	pol_lon = info2["result"]["geometry"]["location"]["lng"]
+	pol_lat = str(info2["result"]["geometry"]["location"]["lat"])
+	pol_lon = str(info2["result"]["geometry"]["location"]["lng"])
 	pol_loc = pol_lat+","+pol_lon
 	url_pol = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+loc+"&destinations="+pol_loc+"&key= AIzaSyALEK65QRcNATfIwM2NZ0RF_ucaQSMbObQ"
 	pol_dets = requests.get(url_pol)
 	pol_info = pol_dets.json()
-	pol_distance_dur = pol_info['rows']['0']['elements']['0']['distance'] +";"+pol_info['rows']['0']['elements']['0']['duration']
+	pol_distance_dur = pol_info['rows'][0]['elements'][0]['distance']['text'] +";"+pol_info['rows'][0]['elements'][0]['duration']['text']
 
 
 
