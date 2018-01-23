@@ -80,4 +80,4 @@ def param():
 		if key in address:
 			mail = dic[key]
 
-	return (name+";"+address+";"+phone+";"+name2+";"+address2+";"+phone2+";"+mail)
+	return (name+";"+address+";"+phone+";"+name2+";"+address2+";"+phone2+";"+mail+";"+hosp_distance_dur+";"+pol_distance_dur)
