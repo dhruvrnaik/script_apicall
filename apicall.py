@@ -20,6 +20,13 @@ except Error:
 address = info["result"]["formatted_address"]
 name = info['result']['name']
 
+hosp_lat = info["result"]["geometry"]["location"]["lat"]
+hosp_lon = info["result"]["geometry"]["location"]["lng"]
+hosp_loc = hosp_lat+","+hosp_lon
+url_hosp = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+loc+"&destinations="+hosp_loc+"&key= AIzaSyALEK65QRcNATfIwM2NZ0RF_ucaQSMbObQ"
+hosp_dets = requests.get(url_hosp)
+hosp_info = hosp_dets.json()
+
 dic = {"Kerela":"dgp.pol@kerala.gov.in;Not available",
 "Chennai":"cop@vsnl.net;@chennaipolice_",
 "Tamil Nadu":"dgp@tn.gov.in;Not Available",

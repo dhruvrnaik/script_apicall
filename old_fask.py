@@ -24,16 +24,9 @@ def param():
 	try:
 		phone = info["result"]["formatted_phone_number"]
 	except :
-		phone = "Not Available"
+		phone = "112"
 	address = info["result"]["formatted_address"]
 	name = info['result']['name']
-	hosp_lat = info["result"]["geometry"]["location"]["lat"]
-	hosp_lon = info["result"]["geometry"]["location"]["lng"]
-	hosp_loc = hosp_lat+","+hosp_lon
-	url_hosp = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+loc+"&destinations="+hosp_loc+"&key= AIzaSyALEK65QRcNATfIwM2NZ0RF_ucaQSMbObQ"
-	hosp_dets = requests.get(url_hosp)
-	hosp_info = hosp_dets.json()
-	hosp_distance_dur = hosp_info['rows']['0']['elements']['0']['distance'] +";"+hosp_info['rows']['0']['elements']['0']['duration']
 
 	#Police Station
 	url3 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+loc+"&rankby=distance&type=police&key=AIzaSyClvOa41RlvjTGJrdpHo3pxnHm00MRR27w"
@@ -50,19 +43,9 @@ def param():
 	try:
 		phone2 = info2["result"]["formatted_phone_number"]
 	except :
-		phone2 = "Not Available"
+		phone2 = "100"
 	address2 = info2["result"]["formatted_address"]
 	name2 = info2['result']['name']
-
-	pol_lat = info2["result"]["geometry"]["location"]["lat"]
-	pol_lon = info2["result"]["geometry"]["location"]["lng"]
-	pol_loc = pol_lat+","+pol_lon
-	url_pol = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+loc+"&destinations="+pol_loc+"&key= AIzaSyALEK65QRcNATfIwM2NZ0RF_ucaQSMbObQ"
-	pol_dets = requests.get(url_pol)
-	pol_info = pol_dets.json()
-	pol_distance_dur = pol_info['rows']['0']['elements']['0']['distance'] +";"+pol_info['rows']['0']['elements']['0']['duration']
-
-
 
 	dic = {"Kerela":"dgp.pol@kerala.gov.in;Not available",
 	"Chennai":"cop@vsnl.net;@chennaipolice_",
